@@ -5,12 +5,16 @@
  */
 package com.koona.invoiceweb.controller;
 
+import com.koona.invoiceweb.form.InvoiceForm;
 import com.koona.invoise.core.controller.InvoiceControllerInterface;
 import com.koona.invoise.core.entity.Invoice;
 import com.koona.invoise.core.service.InvoiceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindingResultUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,13 +27,23 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/invoice")
-public class InvoiceWebController implements InvoiceControllerInterface {
+public class InvoiceWebController {
     
     @Autowired
     private InvoiceServiceInterface invoiceService;
 
     @PostMapping("")
-    public String createInvoice(@ModelAttribute Invoice invoice) {
+    public String createInvoice(
+            @Validated @ModelAttribute InvoiceForm invoiceForm,
+            BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()){
+            return "invoice-create-form";
+        }
+        Invoice invoice = new Invoice();
+        invoice.setNumber(invoiceForm.getNumber());
+        invoice.setOrderNumber(invoiceForm.getOrderNumber());
+        invoice.setCustomerName(invoiceForm.getCustomerName());
 
         invoiceService.create(invoice);
 
@@ -60,7 +74,7 @@ public class InvoiceWebController implements InvoiceControllerInterface {
     }
 
     @GetMapping("/create-form")
-    public String displayInvoiceCreateForm(@ModelAttribute Invoice invoice) {
+    public String displayInvoiceCreateForm(@ModelAttribute InvoiceForm invoiceForm) {
 
         return "invoice-create-form";
     }

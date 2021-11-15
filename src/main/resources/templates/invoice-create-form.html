@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Ajout de la facture</h1>
-<form th:action="@{/invoice}" method="post" th:object="${invoice}">
+<form th:action="@{/invoice}" method="post" th:object="${invoiceForm}">
     <label>
         Cusomer name :
         <input type="text" th:field="*{customerName}">
