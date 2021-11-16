@@ -10,11 +10,15 @@
     <label>
         Cusomer name :
         <input type="text" th:field="*{customerName}">
+        <span style="color:red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
     </label>
+    <br>
     <label>
         Order number :
         <input type="text"  th:field="*{orderNumber}">
+        <span style="color:red" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></span>
     </label>
+    <br>
     <input type="submit" value="OK">
 </form>
 </body>
