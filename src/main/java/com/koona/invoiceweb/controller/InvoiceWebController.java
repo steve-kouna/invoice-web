@@ -31,8 +31,8 @@ public class InvoiceWebController {
     
     @Autowired
     private InvoiceServiceInterface invoiceService;
-/*
-    @PostMapping("")
+
+    @PostMapping("/create")
     public String createInvoice(
             @Validated @ModelAttribute InvoiceForm invoiceForm,
             BindingResult bindingResult
@@ -49,7 +49,7 @@ public class InvoiceWebController {
 
         return "invoice-created";
     }
-*/
+
     public InvoiceServiceInterface getInvoiceService() {
         return invoiceService;
     }
@@ -57,7 +57,7 @@ public class InvoiceWebController {
     public void setInvoiceService(InvoiceServiceInterface invoiceService) {
         this.invoiceService = invoiceService;
     }
-/*
+
     @GetMapping("/home")
     public String  displayHome(Model model) {
         System.out.println("La methode display home a ete invoquee !");
@@ -66,6 +66,7 @@ public class InvoiceWebController {
         return "invoice-home";
     }
 
+/*
     @GetMapping("/{id}")
     public String displayInvoice(@PathVariable("id") String number, Model model) {
         System.out.println("La methode displayInvoice a ete invoquee !");
