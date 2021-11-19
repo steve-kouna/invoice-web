@@ -53,7 +53,7 @@ public class InvoiceResource {
     }
  */
     @GetMapping
-    public List<Invoice> getInvoices() {
+    public Iterable<Invoice> getInvoices() {
         System.out.println("La methode display home a ete invoquee !");
         return  invoiceService.getInvoiceList();
     }
