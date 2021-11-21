@@ -7,6 +7,7 @@ package com.koona.invoiceweb.controller;
 
 import com.koona.invoiceweb.form.InvoiceForm;
 import com.koona.invoise.core.controller.InvoiceControllerInterface;
+import com.koona.invoise.core.entity.Customer;
 import com.koona.invoise.core.entity.Invoice;
 import com.koona.invoise.core.service.InvoiceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,12 @@ public class InvoiceWebController {
             return "invoice-create-form";
         }
         Invoice invoice = new Invoice();
+        Customer customer = new Customer();
         invoice.setNumber(invoiceForm.getNumber());
         invoice.setOrderNumber(invoiceForm.getOrderNumber());
-        invoice.setCustomerName(invoiceForm.getCustomerName());
+
+        customer.setName(invoiceForm.getCustomerName());
+        invoice.setCustomer(customer);
 
         invoiceService.create(invoice);
 
