@@ -19,6 +19,36 @@
         <span style="color:red" th:if="${#fields.hasErrors('orderNumber')}" th:errors="*{orderNumber}"></span>
     </label>
     <br>
+    <label>
+        Street name :
+        <input type="text" th:field="*{streetName}">
+        <span style="color:red" th:if="${#fields.hasErrors('streetName')}" th:errors="*{streetName}"></span>
+    </label>
+    <br>
+    <label>
+        Street number :
+        <input type="text" th:field="*{streetNumber}">
+        <span style="color:red" th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}"></span>
+    </label>
+    <br>
+    <label>
+        Zip code :
+        <input type="text" th:field="*{zipCode}">
+        <span style="color:red" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}"></span>
+    </label>
+    <br>
+    <label>
+        City:
+        <input type="text" th:field="*{city}">
+        <span style="color:red" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+    </label>
+    <br>
+    <label>
+        Country:
+        <input type="text" th:field="*{country}">
+        <span style="color:red" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></span>
+    </label>
+    <br>
     <input type="submit" value="OK">
 </form>
 </body>

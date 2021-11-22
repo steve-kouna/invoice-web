@@ -7,6 +7,7 @@ package com.koona.invoiceweb.controller;
 
 import com.koona.invoiceweb.form.InvoiceForm;
 import com.koona.invoise.core.controller.InvoiceControllerInterface;
+import com.koona.invoise.core.entity.Address;
 import com.koona.invoise.core.entity.Customer;
 import com.koona.invoise.core.entity.Invoice;
 import com.koona.invoise.core.service.InvoiceServiceInterface;
@@ -43,11 +44,15 @@ public class InvoiceWebController {
         }
         Invoice invoice = new Invoice();
         Customer customer = new Customer();
+        Address address = new Address(invoiceForm.getStreetName(), invoiceForm.getStreetNumber(), invoiceForm.getCity(), invoiceForm.getZipCode(), invoiceForm.getCountry());
+
+        customer.setAddress(address);
         invoice.setNumber(invoiceForm.getNumber());
         invoice.setOrderNumber(invoiceForm.getOrderNumber());
 
         customer.setName(invoiceForm.getCustomerName());
         invoice.setCustomer(customer);
+
 
         invoiceService.create(invoice);
 
