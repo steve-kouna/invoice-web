@@ -6,17 +6,12 @@
 package com.koona.invoiceweb.api;
 
 import com.koona.invoiceweb.form.InvoiceForm;
-import com.koona.invoise.core.entity.Customer;
-import com.koona.invoise.core.entity.Invoice;
+import com.koona.invoise.core.entity.customer.Customer;
+import com.koona.invoise.core.entity.invoice.Invoice;
 import com.koona.invoise.core.service.InvoiceServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  *
